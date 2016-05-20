@@ -14,5 +14,6 @@ node {
    stage 'Build'
    // Run the maven build
    sh "${mvnHome}/bin/mvn install  -Dmaven.test.failure.ignore=true"
+   sh "echo maven build was successful." 
    step([$class: 'ArtifactArchiver', artifacts: '**/target/*.jar', fingerprint: true])
 }
