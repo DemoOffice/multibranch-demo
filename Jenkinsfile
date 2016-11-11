@@ -17,9 +17,10 @@ node {
       }
    }
    
-   node('remote') {
-   input 'Ready to go?'
-  // rest as before
+  node('remote') {
+  input 'Ready to go?'
+   }
+   
    stage('Results') {
       junit '**/target/surefire-reports/TEST-*.xml'
       archive 'target/*.jar'
