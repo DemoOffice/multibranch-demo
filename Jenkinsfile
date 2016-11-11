@@ -16,13 +16,19 @@ node {
          bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
       }
    }
-   
-  node('remote') {
-  input 'Ready to go?'
-   }
-   
+    
    stage('Results') {
       junit '**/target/surefire-reports/TEST-*.xml'
       archive 'target/*.jar'
    }
 }
+
+node {
+  input 'Ready to Deploy?'
+}
+
+node {
+      stage('Deploy') { 
+      echo 'hello from Pipeline'
+      }
+  }   
